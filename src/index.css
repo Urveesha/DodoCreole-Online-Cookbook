@@ -69,10 +69,18 @@ a:hover {
 
 .main-content {
   flex: 1;
-  padding: var(--spacing-lg) var(--spacing-md);
-  max-width: var(--container-width);
-  margin: 0 auto;
+  padding: 0 0 var(--spacing-lg);
+  max-width: none;
+  margin: 0;
   width: 100%;
+}
+
+.home-page > section:not(.hero-section),
+.main-content > section:not(.hero-section),
+.single-post {
+  max-width: var(--container-width);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* =============================================
@@ -124,34 +132,65 @@ a:hover {
 }
 
 .hero-section {
-  min-height: 430px;
-  border-radius: 28px;
+  width: 100%;
+  min-height: 78vh;
+  border-radius: 0;
   background:
-    linear-gradient(rgba(84, 107, 65, 0.88), rgba(84, 107, 65, 0.82)),
-    radial-gradient(circle at top right, #FBE580 0, transparent 35%),
-    linear-gradient(135deg, #546B41, #99AD7A);
+    linear-gradient(rgba(0, 0, 0, 0.52), rgba(84, 107, 65, 0.62)),
+    url('/images/mauritian-hero.jpg') center/cover no-repeat;
   display: flex;
   align-items: center;
-  padding: 4rem 2rem;
+  padding: 5rem max(2rem, calc((100vw - var(--container-width)) / 2 + 1.5rem));
   overflow: hidden;
   box-shadow: 0 18px 35px rgba(84, 107, 65, 0.22);
+  position: relative;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.16);
 }
 
 .hero-overlay {
-  max-width: 720px;
+  max-width: 760px;
   color: white;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-overlay h1 {
-  font-size: clamp(2.5rem, 6vw, 4.8rem);
-  line-height: 1;
-  margin-bottom: 1rem;
+  font-size: clamp(3.2rem, 7vw, 6rem);
+  line-height: 0.95;
+  margin-bottom: 1.25rem;
+  font-weight: 900;
+  letter-spacing: -2px;
+  text-shadow:
+    0 0 5px rgba(255, 255, 255, 0.4),
+    0 0 14px rgba(255, 255, 255, 0.25),
+    0 0 24px rgba(0, 0, 0, 0.45);
+}
+
+.hero-overlay h1 span {
+  display: block;
+  color: #FBE580;
+  text-transform: none;
+  letter-spacing: -2px;
+  text-shadow:
+    0 0 8px rgba(251, 229, 128, 0.7),
+    0 0 18px rgba(251, 229, 128, 0.45),
+    0 0 30px rgba(251, 229, 128, 0.22);
 }
 
 .hero-overlay p {
   font-size: 1.15rem;
-  max-width: 650px;
-  margin-bottom: 1.5rem;
+  max-width: 720px;
+  margin-bottom: 1.8rem;
+  color: rgba(255, 255, 255, 0.94);
+  text-shadow: 0 0 12px rgba(0, 0, 0, 0.35);
 }
 
 .hero-buttons {
@@ -167,20 +206,41 @@ a:hover {
   background: var(--colour-accent);
   color: var(--colour-text);
   font-weight: 700;
-  padding: 0.85rem 1.25rem;
+  padding: 0.9rem 1.35rem;
   border-radius: 999px;
   box-shadow: 0 8px 18px rgba(47, 51, 40, 0.16);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .hero-btn:hover,
 .card-btn:hover,
 .cta-btn:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   text-decoration: none;
+  box-shadow: 0 12px 24px rgba(47, 51, 40, 0.2);
 }
 
 .secondary-btn {
   background: white;
+}
+.about-btn {
+  display: block;
+  width: fit-content;
+  margin: 1.8rem auto 0;
+  background: var(--colour-accent);
+  color: var(--colour-text);
+  font-weight: 700;
+  padding: 0.9rem 1.5rem;
+  border-radius: 999px;
+  transition: all 0.25s ease;
+  box-shadow: 0 8px 18px rgba(47, 51, 40, 0.12);
+}
+
+.about-btn:hover {
+  background: #f6dc5b;
+  color: var(--colour-text);
+  text-decoration: none;
+  transform: translateY(-3px);
 }
 
 .welcome-section,
@@ -190,6 +250,10 @@ a:hover {
   border: 1px solid var(--colour-border);
   border-radius: 24px;
   padding: 2rem;
+  width: 100%;
+  max-width: var(--container-width);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .welcome-section h2,
@@ -221,6 +285,43 @@ a:hover {
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
+.featured-bg {
+  position: relative;
+  min-height: 320px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.featured-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0.2)
+  );
+}
+
+.featured-overlay {
+  position: relative;
+  z-index: 1;
+  color: white;
+  width: 100%;
+}
+
+.featured-overlay h3,
+.featured-overlay p {
+  color: white;
+}
+
+.featured-overlay .card-btn {
+  margin-top: 1rem;
+}
+
 .featured-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 12px 28px rgba(84, 107, 65, 0.16);
@@ -239,8 +340,22 @@ a:hover {
 .cta-section {
   text-align: center;
   background: linear-gradient(135deg, var(--colour-warm), var(--colour-accent));
+  border-radius: 24px;
+  padding: 2rem;
+  max-width: 100%;
+  width: 100%;
+}
+.cta-section .container-small {
+  max-width: 100%;
 }
 
+.cta-section p {
+  margin: 1rem auto;
+}
+
+.cta-btn {
+  margin-top: 1rem;
+}
 /* =============================================
    Footer
    ============================================= */
@@ -372,8 +487,7 @@ a:hover {
    ============================================= */
 .single-post {
   max-width: 760px;
-  margin: 0 auto;
-}
+} 
 
 .single-post h1 {
   font-size: 2.4rem;
@@ -415,8 +529,8 @@ a:hover {
   }
 
   .hero-section {
-    min-height: 360px;
-    padding: 3rem 1.5rem;
+    min-height: 65vh;
+    padding: 4rem 1.5rem;
   }
 }
 
@@ -433,4 +547,18 @@ a:hover {
   .single-post h1 {
     font-size: 1.7rem;
   }
-} 
+
+  .hero-overlay h1 {
+    font-size: 3rem;
+  }
+}
+
+.featured-overlay h3 {
+  color: var(--colour-accent);
+  text-shadow: 0 0 10px rgba(0,0,0,0.45);
+}
+
+.featured-overlay p {
+  color: #FFF8EC;
+  text-shadow: 0 0 10px rgba(0,0,0,0.45);
+}

@@ -17,7 +17,7 @@ function BlogList() {
     const fetchPosts = async () => {
       try {
         // _embed includes featured media in a single request
-        const response = await fetch(`${API}/posts?_embed&per_page=12`)
+        const response = await fetch(`${API}/posts?_embed&per_page=100`)
         if (!response.ok) throw new Error(`HTTP error: ${response.status}`)
         const data = await response.json()
         setPosts(data)
@@ -36,7 +36,7 @@ function BlogList() {
 
   return (
     <section>
-      <h1>Blog</h1>
+      <h1>Recipes</h1>
       {posts.length === 0 ? (
         <p>No posts found. Add some posts in WordPress first.</p>
       ) : (

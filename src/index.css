@@ -448,6 +448,10 @@ a:hover {
   overflow: hidden;
   background: var(--colour-surface);
   transition: transform 0.2s, box-shadow 0.2s;
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .post-card:hover {
@@ -463,6 +467,10 @@ a:hover {
 
 .post-card-body {
   padding: var(--spacing-md);
+
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .post-card h2 {
@@ -475,6 +483,14 @@ a:hover {
   font-size: 0.9rem;
   color: var(--colour-text-light);
   margin-bottom: var(--spacing-sm);
+}
+
+.read-more {
+  margin-top: auto;
+  align-self: flex-start;
+
+  font-size: 0.875rem;
+  font-weight: 700;
 }
 
 .read-more {
@@ -644,4 +660,61 @@ a:hover {
 .recipes-page .read-more:hover {
   text-decoration: none;
   transform: translateY(-2px);
+}
+
+/* =============================================
+   Recipe Filters
+============================================= */
+
+.recipe-filters {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.recipe-filters button {
+  background: transparent;
+  border: 2px solid var(--colour-accent);
+  color: var(--colour-primary);
+  padding: 0.9rem 1.5rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.recipe-filters button:hover {
+  background: var(--colour-accent);
+  transform: translateY(-2px);
+}
+
+.recipe-filters .active-filter {
+  background: var(--colour-accent);
+  color: var(--colour-text);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+}
+
+/* Force recipe card buttons to align at the bottom */
+.recipes-page .post-card {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+
+.recipes-page .post-card-body {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 !important;
+}
+
+.recipes-page .post-excerpt {
+  margin-bottom: 1rem;
+}
+
+.recipes-page .read-more {
+  margin-top: auto !important;
+  align-self: flex-start !important;
 }

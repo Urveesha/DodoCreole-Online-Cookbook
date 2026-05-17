@@ -718,3 +718,43 @@ a:hover {
   margin-top: auto !important;
   align-self: flex-start !important;
 }
+
+/* =============================================
+   Recipe Search Bar
+============================================= */
+
+.recipe-search {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto 2rem;
+}
+
+.recipe-search input {
+  width: 100%;
+  padding: 1rem 1.3rem;
+  border-radius: 999px;
+  border: 2px solid var(--colour-border);
+  background: white;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.recipe-search input:focus {
+  border-color: var(--colour-accent);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+
+
+/* =============================================
+   Image Hover Zoom
+============================================= */
+
+.post-card img {
+  transition: transform 0.45s ease !important;
+}
+
+.post-card:hover img {
+  transform: scale(1.08);
+}

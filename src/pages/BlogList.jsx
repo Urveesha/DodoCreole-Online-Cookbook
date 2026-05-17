@@ -10,6 +10,7 @@ function BlogList() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [activeCategory, setActiveCategory] = useState('all')
+  const [searchTerm, setSearchTerm] = useState('')
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -21,13 +22,10 @@ function BlogList() {
         }
 
         const data = await response.json()
-
         setPosts(data)
         setFilteredPosts(data)
-
       } catch (err) {
         setError(err.message)
-
       } finally {
         setLoading(false)
       }
@@ -36,20 +34,27 @@ function BlogList() {
     fetchPosts()
   }, [])
 
-  const filterRecipes = categorySlug => {
+  const filterRecipes = (categorySlug, search = searchTerm) => {
     setActiveCategory(categorySlug)
 
-    if (categorySlug === 'all') {
-      setFilteredPosts(posts)
-      return
+    let filtered = posts
+
+    if (categorySlug !== 'all') {
+      filtered = filtered.filter(post => {
+        const categories =
+          post._embedded?.['wp:term']?.[0]?.map(cat => cat.slug) || []
+
+        return categories.includes(categorySlug)
+      })
     }
 
-    const filtered = posts.filter(post => {
-      const categories =
-        post._embedded?.['wp:term']?.[0]?.map(cat => cat.slug) || []
-
-      return categories.includes(categorySlug)
-    })
+    if (search.trim() !== '') {
+      filtered = filtered.filter(post =>
+        post.title.rendered
+          .toLowerCase()
+          .includes(search.toLowerCase())
+      )
+    }
 
     setFilteredPosts(filtered)
   }
@@ -62,7 +67,6 @@ function BlogList() {
 
   return (
     <section className="recipes-page">
-
       <div className="recipes-hero">
         <h1>Our Recipes</h1>
 
@@ -73,7 +77,6 @@ function BlogList() {
       </div>
 
       <div className="recipe-filters">
-
         <button
           className={activeCategory === 'all' ? 'active-filter' : ''}
           onClick={() => filterRecipes('all')}
@@ -96,16 +99,23 @@ function BlogList() {
         </button>
 
         <button
-          className={
-            activeCategory === 'sweets-beverages'
-              ? 'active-filter'
-              : ''
-          }
+          className={activeCategory === 'sweets-beverages' ? 'active-filter' : ''}
           onClick={() => filterRecipes('sweets-beverages')}
         >
           Sweets & Beverages
         </button>
+      </div>
 
+      <div className="recipe-search">
+        <input
+          type="text"
+          placeholder="Search Mauritian recipes..."
+          value={searchTerm}
+          onChange={e => {
+            setSearchTerm(e.target.value)
+            filterRecipes(activeCategory, e.target.value)
+          }}
+        />
       </div>
 
       {filteredPosts.length === 0 ? (

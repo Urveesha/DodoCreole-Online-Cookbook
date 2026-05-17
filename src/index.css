@@ -562,3 +562,86 @@ a:hover {
   color: #FFF8EC;
   text-shadow: 0 0 10px rgba(0,0,0,0.45);
 }
+
+/* =============================================
+   Recipes Page
+============================================= */
+
+.recipes-page {
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: var(--spacing-lg) var(--spacing-md);
+}
+
+.recipes-hero {
+  background:
+    linear-gradient(rgba(84, 107, 65, 0.88), rgba(84, 107, 65, 0.78)),
+    linear-gradient(135deg, var(--colour-primary), var(--colour-secondary));
+  color: white;
+  border-radius: 28px;
+  padding: 4rem 2rem;
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+  box-shadow: 0 14px 30px rgba(84, 107, 65, 0.18);
+}
+
+.recipes-hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  margin-bottom: 1rem;
+  font-weight: 900;
+}
+
+.recipes-hero p {
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.recipes-page .posts-grid {
+  gap: 2rem;
+}
+
+.recipes-page .post-card {
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid var(--colour-border);
+  overflow: hidden;
+}
+
+.recipes-page .post-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(84, 107, 65, 0.18);
+}
+
+.recipes-page .post-card img {
+  height: 230px;
+  transition: transform 0.35s ease;
+}
+
+.recipes-page .post-card:hover img {
+  transform: scale(1.06);
+}
+
+.recipes-page .post-card-body {
+  padding: 1.4rem;
+}
+
+.recipes-page .post-card h2 {
+  font-size: 1.25rem;
+}
+
+.recipes-page .read-more {
+  display: inline-block;
+  margin-top: 0.5rem;
+  background: var(--colour-accent);
+  color: var(--colour-text);
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+}
+
+.recipes-page .read-more:hover {
+  text-decoration: none;
+  transform: translateY(-2px);
+}

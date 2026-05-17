@@ -1,7 +1,3 @@
-// BlogList — fetches all posts from WordPress and displays them.
-// This is a complete reference implementation showing the fetch pattern.
-// Study this before building your CPT components.
-
 import { useState, useEffect } from 'react'
 import PostCard from '../components/PostCard'
 import ApiError from '../components/ApiError'
@@ -16,7 +12,6 @@ function BlogList() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        // _embed includes featured media in a single request
         const response = await fetch(`${API}/posts?_embed&per_page=100`)
         if (!response.ok) throw new Error(`HTTP error: ${response.status}`)
         const data = await response.json()
@@ -31,14 +26,21 @@ function BlogList() {
     fetchPosts()
   }, [])
 
-  if (loading) return <p className="loading">Loading posts...</p>
-  if (error) return <ApiError error={error} context="posts" />
+  if (loading) return <p className="loading">Loading recipes...</p>
+  if (error) return <ApiError error={error} context="recipes" />
 
   return (
-    <section>
-      <h1>Recipes</h1>
+    <section className="recipes-page">
+      <div className="recipes-hero">
+        <h1>Our Recipes</h1>
+        <p>
+          Explore authentic Mauritian dishes, snacks, sweets, and beverages
+          inspired by island traditions and family kitchens.
+        </p>
+      </div>
+
       {posts.length === 0 ? (
-        <p>No posts found. Add some posts in WordPress first.</p>
+        <p>No recipes found. Add some posts in WordPress first.</p>
       ) : (
         <div className="posts-grid">
           {posts.map(post => (

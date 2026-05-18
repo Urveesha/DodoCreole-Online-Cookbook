@@ -1157,16 +1157,6 @@ a:hover {
   );
 }
 
-.tip-badge {
-  align-self: flex-start;
-  background: var(--colour-accent);
-  color: var(--colour-text);
-  padding: 0.45rem 0.85rem;
-  border-radius: 999px;
-  font-size: 0.78rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
-}
 
 .tip-card h2 {
   color: #FBE580;
@@ -1200,4 +1190,180 @@ a:hover {
     min-height: 65vh;
     padding: 4rem 1.5rem;
   }
+}
+
+/* =============================================
+   Single Cooking Tip Page
+============================================= */
+
+.tip-detail-page {
+  max-width: 950px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+.tip-back-link {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+  color: var(--colour-primary);
+}
+
+.tip-detail-hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.45), rgba(84, 107, 65, 0.55)),
+    url('/images/tips-bg.jpg') center/cover no-repeat;
+  color: white;
+  border-radius: 30px;
+  padding: 3rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 18px 36px rgba(84, 107, 65, 0.2);
+}
+
+.tip-detail-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.tip-detail-hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+.tip-detail-label {
+  display: inline-block;
+  background: var(--colour-accent);
+  color: var(--colour-text);
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 0.8rem;
+  margin-bottom: 1.2rem;
+}
+
+.tip-detail-hero h1 {
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1.05;
+  margin-bottom: 1rem;
+}
+
+.tip-detail-hero p {
+  max-width: 720px;
+  color: rgba(255,255,255,0.92);
+  font-size: 1.1rem;
+}
+
+.tip-detail-content {
+  position: relative;
+  background: rgba(255,255,255,0.86);
+  border: 1px solid var(--colour-border);
+  border-radius: 28px;
+  padding: 2.5rem;
+  padding-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.tip-icon-circle {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: var(--colour-accent);
+  color: var(--colour-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 900;
+  margin-bottom: 1.5rem;
+}
+
+.tip-content-box p {
+  color: var(--colour-text-light);
+  font-size: 1.08rem;
+  line-height: 1.9;
+  margin-bottom: 1rem;
+}
+
+.tip-content-box ul,
+.tip-content-box ol {
+  list-style: none;
+  padding-left: 0;
+  margin: 1.2rem 0;
+}
+
+.tip-content-box li {
+  position: relative;
+  padding-left: 2.1rem;
+  margin-bottom: 1rem;
+  color: var(--colour-text);
+  font-size: 1.05rem;
+}
+
+.tip-content-box li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--colour-primary);
+  font-weight: 900;
+}
+
+.tip-reminder-box {
+  background: var(--colour-accent);
+  border-radius: 26px;
+  padding: 2rem;
+  text-align: center;
+}
+
+.tip-reminder-box h2 {
+  color: var(--colour-primary);
+  margin-bottom: 0.7rem;
+}
+
+.tip-reminder-box p {
+  color: var(--colour-text);
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+  .tip-detail-hero,
+  .tip-detail-content {
+    padding: 1.6rem;
+  }
+}
+
+.tip-stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  margin: 2rem 0 3rem;
+}
+
+.tip-stats span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  background: var(--colour-primary);
+  border: 1px solid var(--colour-border);
+
+  padding: 0.9rem 1.2rem;
+  border-radius: 16px;
+
+  color: white;
+  font-weight: 800;
+
+  box-shadow: 0 8px 18px rgba(84, 107, 65, 0.08);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }

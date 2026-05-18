@@ -78,8 +78,7 @@ function CptList() {
                 }}
               >
                 <div className="tip-card-overlay">
-                  <span className="tip-badge">Kitchen Tip</span>
-
+                 
                   <h2>{item.title.rendered}</h2>
 
                   <p>

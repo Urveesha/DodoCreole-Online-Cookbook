@@ -1,11 +1,3 @@
-// CptDetail — displays a single Custom Post Type entry.
-//
-// YOUR TASK:
-// 1. Decide what fields from your CPT to display
-// 2. If you used ACF (Advanced Custom Fields), your custom fields will be
-//    in item.acf — e.g. item.acf.price, item.acf.date
-// 3. Design the layout to suit your scenario
-
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import ApiError from '../components/ApiError'
@@ -36,30 +28,49 @@ function CptDetail() {
     fetchItem()
   }, [id])
 
-  if (loading) return <p className="loading">Loading...</p>
-  if (error) return <ApiError error={error} context="custom post type entry" />
-  if (!item) return <p className="error">Item not found.</p>
-
-  const featuredImage = item._embedded?.['wp:featuredmedia']?.[0]?.source_url
+  if (loading) return <p className="loading">Loading cooking tip...</p>
+  if (error) return <ApiError error={error} context="cooking tip" />
+  if (!item) return <p className="error">Cooking tip not found.</p>
 
   return (
-    <article className="single-post">
-      {/* TODO: Update link label to match your CPT name */}
-      <Link to="/cpt" className="back-link">← Back to portfolio</Link>
+    <article className="tip-detail-page">
+      <Link to="/cpt" className="back-link tip-back-link">
+        ← Back to Cooking Tips
+      </Link>
 
-      <h1>{item.title.rendered}</h1>
+      <section className="tip-detail-hero">
+        <span className="tip-detail-label">Mauritian Kitchen Tip</span>
 
-      {featuredImage && (
-        <img src={featuredImage} alt={item.title.rendered} className="featured-image" />
-      )}
+        <h1 dangerouslySetInnerHTML={{ __html: item.title.rendered }} />
 
-      {/* TODO: Display your CPT's custom fields here */}
-      {/* If using ACF: item.acf.your_field_name */}
-      {/* If using default content: item.content.rendered */}
-      <div
-        className="post-content"
-        dangerouslySetInnerHTML={{ __html: item.content.rendered }}
-      />
+        <p>
+          A simple cooking guide to help you improve flavour, texture, and
+          confidence in the kitchen.
+        </p>
+      </section>
+
+      <div className="tip-stats">
+  <span>👁 1.2K</span>
+  <span>★ Beginner Friendly</span>
+  <span>⏱ 2 min read</span>
+</div>
+
+      <section className="tip-detail-content">
+        
+
+        <div
+          className="tip-content-box"
+          dangerouslySetInnerHTML={{ __html: item.content.rendered }}
+        />
+      </section>
+
+      <section className="tip-reminder-box">
+        <h2>Helpful Reminder</h2>
+        <p>
+          Small cooking details can make a big difference. Take your time,
+          taste as you go, and adjust flavours based on your preference.
+        </p>
+      </section>
     </article>
   )
 }

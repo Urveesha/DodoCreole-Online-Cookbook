@@ -1033,3 +1033,171 @@ a:hover {
     grid-template-columns: 1fr;
   }
 }
+/* =============================================
+   Cooking Tips Page
+============================================= */
+
+.tips-page {
+  width: 100%;
+}
+
+.tips-hero {
+  width: 100%;
+  min-height: 78vh;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.52), rgba(84, 107, 65, 0.62)),
+    url('/images/tips-hero.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  padding: 5rem max(2rem, calc((100vw - var(--container-width)) / 2 + 1.5rem));
+  position: relative;
+  overflow: hidden;
+}
+
+.tips-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.16);
+}
+
+.tips-hero-overlay {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  color: white;
+}
+
+.tips-hero-overlay h1 {
+  font-size: clamp(3.2rem, 7vw, 6rem);
+  line-height: 0.95;
+  margin-bottom: 1.25rem;
+  font-weight: 900;
+  text-shadow:
+    0 0 5px rgba(255, 255, 255, 0.4),
+    0 0 14px rgba(255, 255, 255, 0.25),
+    0 0 24px rgba(0, 0, 0, 0.45);
+}
+
+.tips-hero-overlay p {
+  font-size: 1.15rem;
+  max-width: 720px;
+  margin-bottom: 1.8rem;
+  color: rgba(255, 255, 255, 0.94);
+  text-shadow: 0 0 12px rgba(0, 0, 0, 0.35);
+}
+
+.tips-intro {
+  max-width: var(--container-width);
+  margin: 3rem auto;
+  padding: 2rem;
+  background: var(--colour-accent);
+  border: 1px solid var(--colour-border);
+  border-radius: 24px;
+}
+
+.tips-intro h2 {
+  color: var(--colour-primary);
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.tips-intro p {
+  color: var(--colour-text-light);
+  max-width: 850px;
+}
+
+.tips-grid {
+  max-width: var(--container-width);
+  margin: 0 auto 4rem;
+  padding: 0 var(--spacing-md);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.tip-card {
+  min-height: 360px;
+  border-radius: 26px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 16px 32px rgba(84, 107, 65, 0.16);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tip-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+.tip-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 22px 40px rgba(84, 107, 65, 0.22);
+}
+
+.tip-card-overlay {
+  position: relative;
+  z-index: 1;
+  min-height: 360px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.78),
+    rgba(0,0,0,0.22)
+  );
+}
+
+.tip-badge {
+  align-self: flex-start;
+  background: var(--colour-accent);
+  color: var(--colour-text);
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.tip-card h2 {
+  color: #FBE580;
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  text-shadow: 0 0 10px rgba(0,0,0,0.55);
+}
+
+.tip-card p {
+  color: #FFF8EC;
+  margin-bottom: 1.2rem;
+  text-shadow: 0 0 10px rgba(0,0,0,0.55);
+}
+
+.tip-btn {
+  align-self: flex-start;
+  background: var(--colour-accent);
+  color: var(--colour-text);
+  padding: 0.8rem 1.2rem;
+  border-radius: 999px;
+  font-weight: 800;
+}
+
+.tip-btn:hover {
+  text-decoration: none;
+  transform: translateY(-3px);
+}
+
+@media (max-width: 700px) {
+  .tips-hero {
+    min-height: 65vh;
+    padding: 4rem 1.5rem;
+  }
+}

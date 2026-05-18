@@ -1,13 +1,3 @@
-// CptList — displays all entries of your Custom Post Type.
-//
-// YOUR TASK:
-// 1. Set VITE_CPT_SLUG in your .env file to match your WordPress CPT slug
-// 2. Design how each CPT entry should be displayed (see the TODO below)
-// 3. The fetch pattern here is identical to BlogList — study that first
-//
-// The CPT slug must match what you registered in WordPress exactly.
-// e.g. if you registered "menu-items", set VITE_CPT_SLUG=menu-items
-
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import ApiError from '../components/ApiError'
@@ -19,6 +9,12 @@ function CptList() {
   const [items, setItems] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+
+  const tipImages = [
+    '/images/tip-snacks.jpg',
+    '/images/tip-curry.jpg',
+    '/images/tip-gateau-piment.jpg'
+  ]
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -37,28 +33,67 @@ function CptList() {
     fetchItems()
   }, [])
 
-  if (loading) return <p className="loading">Loading...</p>
-  if (error) return <ApiError error={error} context="custom post type" />
+  if (loading) return <p className="loading">Loading cooking tips...</p>
+  if (error) return <ApiError error={error} context="cooking tips" />
 
   return (
-    <section>
-      {/* TODO: Replace "Portfolio" with your CPT name */}
-      <h1>Portfolio</h1>
+    <section className="tips-page">
+
+      <section className="tips-hero">
+        <div className="tips-hero-overlay">
+          <h1>Cooking Tips</h1>
+
+          <p>
+            Simple Mauritian kitchen tricks to help you prepare crispier snacks,
+            richer curries, and more flavourful homemade dishes.
+          </p>
+        </div>
+      </section>
+
+      <section className="tips-intro">
+        <h2>Kitchen Wisdom for Better Mauritian Cooking</h2>
+
+        <p>
+          These quick tips are designed to guide beginners and home cooks with
+          useful techniques for texture, flavour, and preparation.
+        </p>
+      </section>
 
       {items.length === 0 ? (
-        <p>No items found. Add entries to your Custom Post Type in WordPress first.</p>
+        <p>No cooking tips found. Add entries to your Custom Post Type in WordPress first.</p>
       ) : (
-        <div className="posts-grid">
-          {items.map(item => (
-            // TODO: Replace this with a component or layout appropriate to your CPT
-            // Consider: what fields does your CPT have? How should each item look?
-            <div key={item.id} className="post-card">
-              <div className="post-card-body">
-                <h2>{item.title.rendered}</h2>
-                <Link to={`/cpt/${item.id}`} className="read-more">View details →</Link>
+        <div className="tips-grid">
+          {items.map((item, index) => {
+            const excerpt = item.content.rendered
+              .replace(/<\/?[^>]+(>|$)/g, '')
+              .trim()
+              .slice(0, 130)
+
+            return (
+              <div
+                key={item.id}
+                className="tip-card"
+                style={{
+                  backgroundImage: `url(${tipImages[index % tipImages.length]})`
+                }}
+              >
+                <div className="tip-card-overlay">
+                  <span className="tip-badge">Kitchen Tip</span>
+
+                  <h2>{item.title.rendered}</h2>
+
+                  <p>
+                    {excerpt}
+                    {excerpt.length >= 130 ? '...' : ''}
+                  </p>
+
+                  <Link to={`/cpt/${item.id}`} className="tip-btn">
+                    View Tip →
+                  </Link>
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       )}
     </section>

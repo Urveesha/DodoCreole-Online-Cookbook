@@ -1844,3 +1844,80 @@ a:hover {
   padding-top: 0;
   padding-bottom: 0;
 }
+
+/* =========================================
+   Footer
+========================================= */
+
+.site-footer {
+  background: #546B41;
+  color: white;
+  margin-top: 5rem;
+  padding-top: 4rem;
+}
+
+.footer-container {
+  max-width: 1300px;
+  margin: auto;
+  padding: 0 2rem 3rem;
+
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 3rem;
+}
+
+.footer-logo-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.footer-logo {
+  width: 65px;
+  height: 65px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.footer-brand h2 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.footer-brand p {
+  color: rgba(255,255,255,0.82);
+  line-height: 1.8;
+  max-width: 420px;
+}
+
+.footer-contact p {
+  color: rgba(255,255,255,0.82);
+  margin-bottom: 0.8rem;
+  margin-left: 8rem;
+  text-align: left;
+
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.12);
+  text-align: center;
+  padding: 1.3rem;
+}
+
+.footer-bottom p {
+  margin: 0;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.95rem;
+}
+
+/* Responsive */
+
+@media (max-width: 850px) {
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+}

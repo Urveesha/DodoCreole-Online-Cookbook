@@ -3,8 +3,20 @@ import { Link } from 'react-router-dom'
 function Header() {
   return (
     <header className="site-header">
+
       <div className="container">
-        <h1><Link to="/">DodoCreole Recipes</Link></h1>
+
+        <Link to="/" className="logo-wrapper">
+
+          <img
+            src="/images/logo.png"
+            alt="DodoCreole Recipes Logo"
+            className="site-logo"
+          />
+
+          <h1>DodoCreole Recipes</h1>
+
+        </Link>
 
         <nav className="site-nav">
           <ul>
@@ -15,7 +27,9 @@ function Header() {
             <li><Link to="/page/contact">Contact</Link></li>
           </ul>
         </nav>
+
       </div>
+
     </header>
   )
 }

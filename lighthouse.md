@@ -10,10 +10,6 @@ The audit focused on accessibility and usability across all major pages of the w
 
 # Accessibility Scores
 
-# Accessibility Scores
-
-# Accessibility Scores
-
 - Home Page — 92
 - Recipes Page — 94
 - Single Recipe Page — 93

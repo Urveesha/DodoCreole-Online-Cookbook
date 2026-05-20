@@ -2,14 +2,6 @@
   command = "npm run build"
   publish = "dist"
 
-# Proxy WordPress API through Netlify to avoid CORS issues
-[[redirects]]
-  from = "/wpapi/*"
-  to = "https://dodo-creole-recipes.free.nf/wp-json/:splat"
-  status = 200
-  force = true
-
-# Required for React Router — redirects all routes to index.html
 [[redirects]]
   from = "/*"
   to = "/index.html"

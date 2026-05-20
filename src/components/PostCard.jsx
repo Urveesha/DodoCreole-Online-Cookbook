@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom'
 
 function PostCard({ post }) {
-  const featuredImage =
-    post._embedded?.['wp:featuredmedia']?.[0]?.source_url
 
-  const excerpt = post.excerpt.rendered
-    .replace(/<\/?[^>]+(>|$)/g, '')
-    .trim()
+  const featuredImage =
+    post._embedded?.['wp:featuredmedia']?.[0]?.source_url ||
+    '/images/placeholder.jpg'
+
+  const excerpt = post.excerpt?.rendered
+    ?.replace(/<\/?[^>]+(>|$)/g, '')
+    ?.trim() || ''
 
   const categories =
     post._embedded?.['wp:term']?.[0]
@@ -18,22 +20,18 @@ function PostCard({ post }) {
 
       <div className="image-wrapper">
 
-    
-
-        {featuredImage && (
-          <img
-            src={featuredImage}
-            alt={post.title.rendered}
-          />
-        )}
+        <img
+          src={featuredImage}
+          alt={post.title?.rendered || 'Recipe'}
+        />
 
       </div>
 
       <div className="post-card-body">
 
-        
-
-        <h2>{post.title.rendered}</h2>
+        <h2>
+          {post.title?.rendered || 'Untitled Recipe'}
+        </h2>
 
         <p className="post-excerpt">
           {excerpt}
